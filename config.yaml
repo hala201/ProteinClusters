@@ -1,0 +1,2 @@
+fasta_path: "data/uniref50_sample_2.fasta"
+model_path: "models/sequence_model.pkl"

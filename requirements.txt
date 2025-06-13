@@ -1,0 +1,9 @@
+pandas
+scikit-learn
+PyYAML
+joblib
+pytest
+biopython
+umap-learn
+matplotlib
+seaborn
