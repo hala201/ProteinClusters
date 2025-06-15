@@ -5,9 +5,12 @@ def load_fasta_sequences(path):
     sequences = []
     cluster_ids = []
     for record in SeqIO.parse(path, "fasta"):
-        header_parts = record.description.split(" ")
-        cluster_id = header_parts[0]
+        header = record.description  # e.g., sp|A4GCJ4|RDRP_I36A0
+        try:
+            family_code = header.split("|")[2].split("_")[0]  # e.g., RDRP from RDRP_I36A0
+        except IndexError:
+            family_code = "UNKNOWN"
         sequences.append(str(record.seq))
-        cluster_ids.append(cluster_id)
+        cluster_ids.append(family_code)
 
     return pd.DataFrame({"cluster_id": cluster_ids, "sequence": sequences})
