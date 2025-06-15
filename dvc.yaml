@@ -15,5 +15,3 @@ stages:
     deps:
     - tests/
     - src/
-    outs:
-    - tests/test_report.txt
