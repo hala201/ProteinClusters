@@ -1,0 +1,25 @@
+schema: '2.0'
+stages:
+  train_model:
+    cmd: cd src && python main.py
+    deps:
+    - path: data/uniref50_sample_2.fasta
+      hash: md5
+      md5: e53fec85f70a302dc20e02b5f446d0a3
+      size: 54851
+    - path: src/main.py
+      hash: md5
+      md5: a9844e24e373366d058cece7a640a4b4
+      size: 991
+    params:
+      params.yaml:
+        model.n_clusters: 5
+    outs:
+    - path: metrics.json
+      hash: md5
+      md5: a7a65fa67f4ea9dccbf16160275d5b99
+      size: 18
+    - path: models/sequence_model.pkl
+      hash: md5
+      md5: 926e9d36e1dad5c46b2d4feaed76680e
+      size: 1463

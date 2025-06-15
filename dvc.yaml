@@ -1,6 +1,6 @@
 stages:
   train_model:
-    cmd: python src/main.py
+    cmd: cd src && python main.py
     deps:
     - data/uniref50_sample_2.fasta
     - src/main.py
