@@ -11,13 +11,13 @@ def main():
     with open("../config.yaml", "r") as f:
         config = yaml.safe_load(f)
 
-    data = load_fasta_sequences(f"../{config["fasta_path"]}")
+    data = load_fasta_sequences(f"../{config['fasta_path']}")
     processed = preprocess_sequences(data)
-    model = load_model(f"../{config["model_path"]}", processed)
+    model = load_model(f"../{config['model_path']}", processed)
     predictions = run_inference(model, processed)
-    print(data["cluster_id"])
+    print(data['cluster_id'])
     print(predictions)
-    ari_evaluate(data["cluster_id"], predictions)
+    ari_evaluate(data['cluster_id'], predictions)
     visualize_clusters(processed, predictions, data['cluster_id'])
     
 if __name__ == "__main__":
