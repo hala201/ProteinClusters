@@ -1,0 +1,5 @@
+outs:
+- md5: e53fec85f70a302dc20e02b5f446d0a3
+  size: 54851
+  hash: md5
+  path: uniref50_sample_2.fasta

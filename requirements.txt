@@ -7,3 +7,4 @@ biopython
 umap-learn
 matplotlib
 seaborn
+dvc
