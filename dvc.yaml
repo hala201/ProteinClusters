@@ -10,3 +10,10 @@ stages:
     - models/sequence_model.pkl
     metrics:
     - metrics.json
+  run_unit_tests:
+    cmd: set PYTHONPATH=src && pytest --tb=short | tee tests/test_report.txt
+    deps:
+    - tests/
+    - src/
+    outs:
+    - tests/test_report.txt

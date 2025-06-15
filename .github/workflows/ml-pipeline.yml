@@ -1,0 +1,43 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.10"
+
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+        pip install dvc[s3] pytest
+
+    - name: Pull data and model from DVC remote
+      run: dvc pull
+
+    - name: Reproduce pipeline
+      run: dvc repro
+
+    - name: Push any updated artifacts to remote
+      run: dvc push
+
+    - name: Run tests
+      run: |
+        export PYTHONPATH=src
+        pytest tests/
