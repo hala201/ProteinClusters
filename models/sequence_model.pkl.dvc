@@ -1,5 +1,0 @@
-outs:
-- md5: 926e9d36e1dad5c46b2d4feaed76680e
-  size: 1463
-  hash: md5
-  path: sequence_model.pkl
